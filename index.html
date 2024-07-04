@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مركز الرعاية الطبية</title>
+    <style>
+        body {
+            font-family: 'Arial, sans-serif';
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #e6f7ff;
+            background-image: url('background-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        header {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 10px 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            height: 50px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            white-space: nowrap;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .side-nav {
+            position: fixed;
+            left: -200px;
+            top: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #0073e6;
+            transition: left 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        .side-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+
+        .side-nav ul li {
+            margin: 10px 0;
+        }
+
+        .side-nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        .side-nav ul li a:hover {
+            background-color: #005bb5;
+        }
+
+        .show-menu {
+            left: 0;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            transition: margin-left 0.3s;
+        }
+
+        section {
+            padding: 50px 20px;
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+        }
+
+        form input, form textarea {
+            width: 80%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .appointment-item {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .whatsapp-icon:hover {
+            background-color: #128C7E;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="شعار مركز الرعاية الطبية" />
+        <h1>مركز الرعاية الطبية</h1>
+        <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+    </header>
+
+    <div class="side-nav" id="side-nav">
+        <ul>
+            <li><a href="#home" onclick="showSection('home')">الرئيسية</a></li>
+            <li><a href="#about" onclick="showSection('about')">عن المركز</a></li>
+            <li><a href="#services" onclick="showSection('services')">الخدمات</a></li>
+            <li><a href="#contact" onclick="showSection('contact')">تواصل معنا</a></li>
+            <li><a href="#appointment" onclick="showSection('appointment')">حجز موعد</a></li>
+            <li><a href="#search" onclick="showSection('search')">بحث عن موعد</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <section id="home">
+            <h2>مرحبا بكم في مركز الرعاية الطبية</h2>
+            <p>استمتع بخدمات طبية متميزة معنا.</p>
+        </section>
+
+        <section id="about" class="hidden">
+            <h2>عن المركز</h2>
+            <p>مركز الرعاية الطبية تأسس في عام 2000 بهدف تقديم خدمات طبية عالية الجودة. نقدم خدمات طبية متنوعة ونضمن رضا العملاء من خلال توفير تجربة علاجية مريحة وآمنة.</p>
+            <h3>رؤيتنا</h3>
+            <p>نسعى لأن نكون المركز الرائد في مجال الرعاية الصحية من خلال تقديم خدمات مبتكرة ومتفوقة.</p>
+            <h3>رسالتنا</h3>
+            <p>تقديم رعاية طبية ممتازة، الحفاظ على أعلى معايير الجودة، وتحسين تجربة العلاج من خلال التقنيات الحديثة.</p>
+            <h3>قيمنا</h3>
+            <ul>
+                <li>الاحترام</li>
+                <li>التفاني</li>
+                <li>الاحترافية</li>
+                <li>التعاطف</li>
+            </ul>
+        </section>
+
+        <section id="services" class="hidden">
+            <h2>خدماتنا</h2>
+            <ul>
+                <li>استشارات طبية</li>
+                <li>عمليات جراحية</li>
+                <li>علاج الطوارئ</li>
+                <li>خدمات التأهيل</li>
+                <li>أدوات طبية حديثة</li>
+                <li>توصيات صحية</li>
+            </ul>
+            <button onclick="showSection('appointment')">حجز موعد طبي</button>
+        </section>
+
+        <section id="contact" class="hidden">
+            <h2>تواصل معنا</h2>
+            <form>
+                <label for="name">الاسم:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">الرسالة:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">إرسال</button>
+            </form>
+        </section>
+
+        <section id="appointment" class="hidden">
+            <h2>حجز موعد طبي</h2>
+            <p>هنا يمكنك العثور على جميع المعلومات المتعلقة بمواعيدك الطبية.</p>
+            <form onsubmit="saveAppointment(event)">
+                <label for="appointment-number">رقم الموعد:</label>
+                <input type="text" id="appointment-number" name="appointment-number" required>
+
+                <label for="date">التاريخ:</label>
+                <input type="date" id="date" name="date" required>
+
+                <button type="submit">حجز</button>
+            </form>
+            <h3>مواعيد سابقة</h3>
+            <div id="appointments-list"></div>
+        </section>
+
+        <section id="search" class="hidden">
+            <h2>بحث عن موعد</h2>
+            <form onsubmit="searchAppointment(event)">
+                <label for="search-appointment-number">رقم الموعد:</label>
+                <input type="text" id="search-appointment-number" name="search-appointment-number" required>
+
+                <button type="submit">بحث</button>
+            </form>
+            <div id="search-result"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 مركز الرعاية الطبية. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <a href="https://wa.me/رقم-الواتساب" class="whatsapp-icon" target="_blank" rel="noopener noreferrer">واتساب</a>
+
+    <script>
+        function toggleMenu() {
+            var sideNav = document.getElementById('side-nav');
+            if (sideNav.classList.contains('show-menu')) {
+                sideNav.classList.remove('show-menu');
+            } else {
+                sideNav.classList.add('show-menu');
+            }
+        }
+
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+            toggleMenu();
+        }
+
+        function saveAppointment(event) {
+            event.preventDefault();
+            var appointmentNumber = document.getElementById('appointment-number').value;
+            var date = document.getElementById('date').value;
+            
+            var appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            appointments.push({ appointmentNumber: appointmentNumber, date: date });
+            localStorage.setItem('appointments', JSON.stringify(appointments));
+            
+            displayAppointments();
+        }
+
+        function displayAppointments() {
+            var appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            var appointmentsList = document.getElementById('appointments-list');
+            appointmentsList.innerHTML = '';
+            appointments.forEach(function(appointment) {
+                var appointmentItem = document.createElement('div');
+                appointmentItem.className = 'appointment-item';
+                appointmentItem.innerText = 'موعد رقم ' + appointment.appointmentNumber + ' بتاريخ ' + appointment.date;
+                appointmentsList.appendChild(appointmentItem);
+            });
+        }
+
+        function searchAppointment(event) {
+            event.preventDefault();
+            var appointmentNumber = document.getElementById('search-appointment-number').value;
+            var appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+            var searchResult = document.getElementById('search-result');
+            searchResult.innerHTML = '';
+            var found = false;
+            appointments.forEach(function(appointment) {
+                if (appointment.appointmentNumber === appointmentNumber) {
+                    var resultItem = document.createElement('p');
+                    resultItem.innerText = 'تم العثور على موعد رقم ' + appointmentNumber;
+                    searchResult.appendChild(resultItem);
+                    found = true;
+                }
+            });
+            if (!found) {
+                var noResultItem = document.createElement('p');
+                noResultItem.innerText = 'لم يتم العثور على أي موعد بهذا الرقم';
+                searchResult.appendChild(noResultItem);
+            }
+        }
+    </script>
+</body>
+</html>
